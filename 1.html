@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Basic Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f4f4f4;
+    }
+    .calculator {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      font-size: 16px;
+    }
+    button {
+      width: 48%;
+      padding: 10px;
+      margin: 5px 1%;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <h2>Basic Calculator</h2>
+    <input type="number" id="num1" placeholder="Enter first number">
+    <input type="number" id="num2" placeholder="Enter second number">
+    <div>
+      <button onclick="calculate('+')">Add</button>
+      <button onclick="calculate('-')">Subtract</button>
+      <button onclick="calculate('*')">Multiply</button>
+      <button onclick="calculate('/')">Divide</button>
+    </div>
+    <p id="result">Result: </p>
+  </div>
+
+  <script>
+    function calculate(operator) {
+      const num1 = parseFloat(document.getElementById('num1').value);
+      const num2 = parseFloat(document.getElementById('num2').value);
+      let result;
+
+      if (isNaN(num1) || isNaN(num2)) {
+        result = "Please enter valid numbers.";
+      } else {
+        switch(operator) {
+          case '+':
+            result = num1 + num2;
+            break;
+          case '-':
+            result = num1 - num2;
+            break;
+          case '*':
+            result = num1 * num2;
+            break;
+          case '/':
+            result = num2 !== 0 ? num1 / num2 : "Error! Division by zero.";
+            break;
+        }
+      }
+      document.getElementById('result').innerText = "Result: " + result;
+    }
+  </script>
+</body>
+</html>
